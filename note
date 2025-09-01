@@ -1,0 +1,8 @@
+your_project_folder/
+│
+├── config.py             # Cấu hình chung (paths, parameters)
+├── data_loader.py        # Tải và xử lý dữ liệu cho training
+├── model.py              # Kiến trúc mô hình U-Net
+├── utils.py              # Các hàm tiện ích (metrics, losses, visualize...)
+├── training.py           # File để chạy huấn luyện
+└── evaluate.py           # <-- FILE MỚI: Dành cho toàn bộ code xử lý của bạn
