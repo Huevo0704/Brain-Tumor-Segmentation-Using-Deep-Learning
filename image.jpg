@@ -1,3 +1,0 @@
-git add images/image.jpg
-git commit -m "Add tumor segmentation preview image"
-git push
