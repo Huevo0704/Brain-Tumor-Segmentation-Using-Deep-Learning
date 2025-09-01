@@ -11,14 +11,17 @@ Với sự bùng nổ của học sâu trong thị giác máy tính, ứng dụn
 
 Để giải quyết thách thức này, chúng tôi đề xuất một hệ thống lai (hybrid) hoàn toàn tự động, kết hợp mô hình Attention U-Net – một biến thể nâng cao của U-Net với cơ chế chú ý – và các thuật toán xử lý ảnh cổ điển như lọc Median, phân ngưỡng thích ứng và đường viền chủ động (Active Contour). Bên cạnh phân đoạn, hệ thống còn cung cấp phép đo định lượng chính xác diện tích khối u bằng phương pháp hình học, thay vì chỉ đếm pixel, cho kết quả bằng đơn vị mm².
 
-Hệ thống được đánh giá bằng các chỉ số Dice, IoU, Precision và Recall, đạt độ chính xác cao và khẳng định tiềm năng ứng dụng như một công cụ hỗ trợ lâm sàng mạnh mẽ, hiệu quả và đáng tin cậy.
+**Hệ thống được đánh giá bằng các chỉ số quan trọng trong phân đoạn ảnh y tế:**
+
+  Dice Coefficient (0.8176 – 81.76%): Chỉ số chính phản ánh mức độ trùng khớp giữa vùng dự đoán và vùng thực tế. Kết quả cao cho thấy mô hình xác định ranh giới khối u chính xác và hiệu quả.
+  
+  Precision (0.8480 – 84.80%): Cho biết trong số các điểm ảnh được dự đoán là khối u, có đến 84.8% là chính xác. Điều này chứng minh mô hình có tỷ lệ nhầm lẫn thấp (False Positives ít).
+  
+  Recall (0.8197 – 81.97%): Đo lường khả năng phát hiện toàn bộ khối u thực tế. Giá trị cao cho thấy mô hình ít bỏ sót vùng u quan trọng (False Negatives thấp).
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/056c02c7-093f-4a0a-a54d-bbbbf3932c1f" alt="Attention U-Net Architecture" width="700"/>
 </p>
-
-
-
 
 
 **Các Thành Phần Chính Trong Hệ Thống**
