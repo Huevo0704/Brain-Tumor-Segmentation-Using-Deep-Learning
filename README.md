@@ -61,6 +61,24 @@ Với sự bùng nổ của học sâu trong thị giác máy tính, ứng dụn
 
  **4** Hậu xử lý và đo lường: Áp dụng các kỹ thuật hậu xử lý trên kết quả dự đoán của mô hình, sau đó tính toán diện tích khối u từ các vùng được phân đoạn.
 
+## Download Pretrained Model
+
+Bạn có thể tải mô hình đã huấn luyện theo 2 cách:
+
+### 🔹 1. Dùng Git LFS 
+
+Sau khi cày [Git LFS](https://git-lfs.com/), chạy lệnh sau trong terminal:
+
+```bash
+git clone https://github.com/Huevo0704/Brain-Tumor-Segmentation-Using-Deep-Learning.git
+cd Brain-Tumor-Segmentation-Using-Deep-Learning
+git lfs pull
+```
+
+### 🔹 2. Tải trực tiếp từ Google Drive
+   
+👉 [Download Model (Google Drive)](https://drive.google.com/drive/folders/10TNtie9FQVINNXJCkYqh2T_bM9oSlE_H?usp=sharing)
+
 
 
 
