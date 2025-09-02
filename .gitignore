@@ -5,8 +5,6 @@
 # --- Trained Models ---
 # Các file model rất lớn, không nên đưa lên GitHub.
 # Hãy sử dụng Git LFS hoặc lưu trữ trên cloud (Google Drive, Hugging Face Hub).
-*.keras
-*.h5
 *.pb
 
 # --- Datasets ---
