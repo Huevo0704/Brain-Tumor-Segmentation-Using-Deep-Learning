@@ -59,8 +59,8 @@ Với sự bùng nổ của học sâu trong thị giác máy tính, ứng dụn
 
  **3** Xây dựng và huấn luyện mô hình: Thiết kế mô hình Attention U-Net, huấn luyện trên tập dữ liệu đã chuẩn bị để học cách phát hiện và phân đoạn khối u não [modei.py](https://github.com/Huevo0704/Brain-Tumor-Segmentation-Using-Deep-Learning/blob/main/model.py).
 
- **4** Hậu xử lý và đo lường: Áp dụng các kỹ thuật hậu xử lý trên kết quả dự đoán của mô hình, sau đó tính toán diện tích khối u từ các vùng được phân đoạn.
-
+ **4** Hậu xử lý và đo lường: Áp dụng các kỹ thuật hậu xử lý trên kết quả dự đoán của mô hình, sau đó tính toán diện tích khối u từ các vùng được phân đoạn [evaluate.py](https://github.com/Huevo0704/Brain-Tumor-Segmentation-Using-Deep-Learning/blob/main/evaluate.py).
+ 
 ## Download Pretrained Model
 
 Bạn có thể tải mô hình đã huấn luyện theo 2 cách:
