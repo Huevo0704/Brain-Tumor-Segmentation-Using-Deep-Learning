@@ -18,7 +18,7 @@ from skimage.segmentation import active_contour
 from typing import Tuple, List
 
 # ==============================================================================
-# PHẦN 1: METRICS VÀ LOSS FUNCTIONS CHO KERAS
+# PHẦN 1: METRICS VÀ LOSS FUNCTIONS CHO KERAS (Dùng trong training.py và tải model)
 # ==============================================================================
 
 def dice_coefficient(y_true, y_pred, smooth=1):
@@ -61,35 +61,39 @@ def combined_loss(y_true, y_pred):
     return 0.7 * dice + 0.3 * focal
 
 # ==============================================================================
-# PHẦN 2: CÁC HÀM XỬ LÝ ẢNH VÀ PHÂN TÍCH CHO ĐÁNH GIÁ
+# PHẦN 2: CÁC HÀM XỬ LÝ VÀ PHÂN TÍCH (Dùng trong evaluate.py và app.py)
 # ==============================================================================
 
-def segment_tumor_adaptive(image, block_size, C, method="gaussian", use_morph_ops=True, kernel_size=5):
+def segment_tumor_adaptive(image, block_size, C, kernel_size=5):
     """Phân đoạn ảnh sử dụng Adaptive Thresholding."""
+    if block_size % 2 == 0: block_size += 1 # Block size phải là số lẻ
     processed_image = cv2.convertScaleAbs(image)
-    if method == "gaussian":
-        mask = cv2.adaptiveThreshold(processed_image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, block_size, C)
-    else: # Otsu
-        _, mask = cv2.threshold(processed_image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-
-    if use_morph_ops:
-        kernel = np.ones((kernel_size, kernel_size), np.uint8)
-        mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
-        mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+    mask = cv2.adaptiveThreshold(processed_image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, block_size, C)
+    kernel = np.ones((kernel_size, kernel_size), np.uint8)
+    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
     return (mask / 255).astype(np.uint8)
 
-def calculate_metrics_eval(mask1, mask2):
-    """Tính các chỉ số đánh giá (IoU, Dice, Precision, Recall) cho numpy arrays."""
-    mask1, mask2 = mask1.astype(bool), mask2.astype(bool)
-    intersection = np.logical_and(mask1, mask2)
-    union = np.logical_or(mask1, mask2)
+def calculate_evaluation_metrics(ground_truth_mask, prediction_mask):
+    """
+    Tính các chỉ số đánh giá (IoU, Dice, Precision, Recall) cho numpy arrays.
+    **CẬP NHẬT:** Đổi tên từ calculate_metrics_eval thành tên này cho nhất quán.
+    """
+    gt = ground_truth_mask.astype(bool)
+    pred = prediction_mask.astype(bool)
+    
+    intersection = np.logical_and(gt, pred)
+    union = np.logical_or(gt, pred)
+    
     true_pos = np.sum(intersection)
-    false_pos = np.sum(np.logical_and(~mask1, mask2))
-    false_neg = np.sum(np.logical_and(mask1, ~mask2))
+    false_pos = np.sum(np.logical_and(~gt, pred))
+    false_neg = np.sum(np.logical_and(gt, ~pred))
+    
     iou_val = true_pos / (np.sum(union) + 1e-7)
-    dice_val = (2. * true_pos) / (np.sum(mask1) + np.sum(mask2) + 1e-7)
+    dice_val = (2. * true_pos) / (np.sum(gt) + np.sum(pred) + 1e-7)
     precision_val = true_pos / (true_pos + false_pos + 1e-7)
     recall_val = true_pos / (true_pos + false_neg + 1e-7)
+    
     return iou_val, dice_val, precision_val, recall_val
 
 def calculate_geometric_area(mask: np.ndarray) -> Tuple[float, List]:
@@ -109,7 +113,6 @@ def calculate_geometric_area(mask: np.ndarray) -> Tuple[float, List]:
         contour_shapes = [[centroid, tuple(p1), tuple(p2)] for p1, p2 in zip(points, np.roll(points, -1, axis=0))]
         all_shapes.append(contour_shapes)
         contour_area = sum(Polygon(tri).area for tri in contour_shapes)
-        # Cộng nếu là đường viền ngoài, trừ nếu là lỗ hổng bên trong
         total_area += contour_area if hierarchy[0][i][3] == -1 else -contour_area
     return total_area, all_shapes
 
