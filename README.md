@@ -179,6 +179,13 @@ $$
 
 [12] [DeepLabV3 (27/07/2025)](https://medium.com/)  
 
+## ✍️ Tác giả
+
+- **Võ Văn Huệ**  
+  - [GitHub Profile](https://github.com/Huevo0704)  
+  - 📧 Email: vovanhue0704@gmail.com
+
+
 
     
     
