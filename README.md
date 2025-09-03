@@ -1,7 +1,7 @@
 # Brain-Tumor-Segmentation-Using-Deep-Learning
 This thesis focuses on applying deep learning techniques for brain tumor segmentation in medical images, followed by accurate computation of the tumor area. The primary goal is to improve the precision of medical image analysis, thereby providing effective support for clinical diagnosis and treatment planning.
 ** **
-**Giới thiệu tổng quan**
+## Giới thiệu tổng quan
 
 Với sự bùng nổ của học sâu trong thị giác máy tính, ứng dụng của nó trong phân tích ảnh y tế ngày càng trở nên quan trọng. Trong đó, phân đoạn khối u não từ ảnh cộng hưởng từ (MRI) là bước then chốt, quyết định hiệu quả chẩn đoán, lập kế hoạch điều trị và tiên lượng cho bệnh nhân. Tuy nhiên, đặc điểm hình dạng bất thường và ranh giới mờ của khối u khiến việc phân đoạn thủ công vừa khó khăn vừa thiếu nhất quán.
 
@@ -61,11 +61,11 @@ Với sự bùng nổ của học sâu trong thị giác máy tính, ứng dụn
 
  **4** Hậu xử lý và đo lường: Áp dụng các kỹ thuật hậu xử lý trên kết quả dự đoán của mô hình, sau đó tính toán diện tích khối u từ các vùng được phân đoạn [evaluate.py](https://github.com/Huevo0704/Brain-Tumor-Segmentation-Using-Deep-Learning/blob/main/evaluate.py).
  
-## Download Pretrained Model
+### Download Pretrained Model
 
 Bạn có thể tải mô hình đã huấn luyện theo 2 cách:
 
-### 🔹 1. Dùng Git LFS 
+#### 🔹 1. Dùng Git LFS 
 
 Sau khi cày [Git LFS](https://git-lfs.com/), chạy lệnh sau trong terminal:
 
@@ -75,9 +75,67 @@ cd Brain-Tumor-Segmentation-Using-Deep-Learning
 git lfs pull
 ```
 
-### 🔹 2. Tải trực tiếp từ Google Drive
+#### 🔹 2. Tải trực tiếp từ Google Drive
    
 👉 [Download Model (Google Drive)](https://drive.google.com/drive/folders/10TNtie9FQVINNXJCkYqh2T_bM9oSlE_H?usp=sharing)
+
+## Kết quả 
+
+    Trong tính toán diện tích khối u não, ngoài phương pháp đếm pixel, hệ thống còn áp dụng phân rã hình học bằng cách chia khối u thành nhiều tam giác nhỏ. Cách tiếp cận này giúp giảm sai số ở các vùng biên cong, mô hình hóa khối u như một đa giác và sử dụng công thức Shoelace để tính diện tích.
+
+    Kết quả so sánh cho thấy phương pháp hình học mang lại độ chính xác cao hơn, đồng thời trực quan hóa rõ ràng qua ảnh tam giác hóa.
+ 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/67d9bbdf-a060-417e-8854-f1a895cb4378" alt="Attention U-Net Architecture" width="550"/>
+</p>
+
+<p align="center">Kết quả tính diện tích khối u phát hiện được</p>
+
+### 📐 Công thức tính diện tích khối u
+
+#### 1. Phương pháp phân rã hình học (Tam giác hóa)  
+Tổng diện tích khối u:  
+
+$$
+A_{total} = \sum_{i=1}^{n} A_i
+$$  
+
+Trong đó:  
+- \(A_{total}\): Tổng diện tích khối u (mm²).  
+- \(A_i\): Diện tích tam giác thứ \(i\).  
+- \(n\): Số lượng tam giác được phân rã.  
+
+Diện tích một tam giác với các đỉnh \((x_1,y_1), (x_2,y_2), (x_3,y_3)\):  
+
+$$
+A_i = \frac{1}{2} \left| x_1(y_2-y_3) + x_2(y_3-y_1) + x_3(y_1-y_2) \right|
+$$  
+
+---
+
+#### 2. Phương pháp đếm Pixel  
+Diện tích khối u được tính theo số pixel bên trong khối u:  
+
+$$
+A_{pixel} = a \cdot v
+$$  
+
+Trong đó:  
+- \(a\): Tổng số pixel thuộc vùng khối u.  
+- \(v\): Diện tích thực của một pixel (mm²).  
+
+Diện tích của một pixel theo **DPI**:  
+
+$$
+v = \left(\frac{25.4}{DPI}\right)^2
+$$  
+
+Trong đó:
+
+$$
+\(1 \, \text{inch} = 25.4 \, \text{mm}\).  
+$$
+
 
 
 
