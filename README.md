@@ -181,7 +181,7 @@ $$
 
 ## ✍️ Tác giả
 
-- **Võ Văn Huệ**  
+- **Võ Văn Huệ & Tô Thúy Huỳnh**  
   - [GitHub Profile](https://github.com/Huevo0704)  
   - 📧 Email: vovanhue0704@gmail.com
 
