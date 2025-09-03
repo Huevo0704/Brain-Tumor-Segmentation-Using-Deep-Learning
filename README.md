@@ -153,6 +153,31 @@ $$
 - Xây dựng giao diện web/app thân thiện, cho phép tải ảnh và nhận kết quả ngay.  
 - Kết hợp với dữ liệu lâm sàng khác (tuổi, vị trí, loại khối u) để hỗ trợ chẩn đoán toàn diện hơn. 
 
+## 📚 Tài liệu tham khảo  
+
+[1] [U não lành tính: Dấu hiệu, nguyên nhân và cách chuẩn đoán bệnh (03/02/2025)](https://tamanhhospital.vn/u-nao-lanh-tinh/)  
+
+[2] [Nhật Bản sử dụng AI để phân tích khối u não ác tính (05/03/2025)](https://www.vietnamplus.vn)  
+
+[3] [U não (07/03/2025) – Wikipedia](https://vi.wikipedia.org/wiki)  
+
+[4] [U não do di căn: Những điều cần biết (07/03/2025)](https://www.vinmec.com/)  
+
+[5] [Học sâu (Deep Learning) là gì? (07/03/2025)](https://fpt-is.com/goc-nhin-so/hoc-sau/)  
+
+[6] [Học sâu (Deep Learning) là gì? Cách hoạt động và ứng dụng thực tiễn (10/03/2025)](https://vbee.vn/blog/ai/deep-learning/)  
+
+[7] [Giới thiệu U-net: Mô hình phân đoạn ảnh đột phá trong y tế (Video, 10/03/2025)](https://www.youtube.com/watch?v=NgrLIrOATrE)  
+
+[8] [Image Segmentation (11/03/2025)](https://phamdinhkhanh.github.io/2020/06/10/ImageSegmention.html)  
+
+[9] [Học sâu U-net trong phân đoạn ảnh X-quang phổi (15/03/2025)](https://phuongit.com/hoc-sau-unet-trong-phan-doan-anh-x-quang-phoi/)  
+
+[10] [Google Colab là gì? (27/07/2025)](https://fptshop.com.vn/tin-tuc/danh-gia/google-colab-167087)  
+
+[11] [Đánh giá mô hình phân loại trong ML (15/03/2025)](https://phamdinhkhanh.github.io/2020/08/13/ModelMetric.html)  
+
+[12] [DeepLabV3 (27/07/2025)](https://medium.com/)  
 
 
     
