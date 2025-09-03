@@ -136,9 +136,22 @@ $$
 \(1 \, \text{inch} = 25.4 \, \text{mm}\).  
 $$
 
+## 📌 Kết luận  
 
+- Hệ thống đã xây dựng thành công mô hình **Attention U-Net** cho bài toán phân đoạn khối u não.  
+- Kết quả cho thấy mô hình đạt độ chính xác cao (**Dice, IoU tốt**), và có thể xác định chính xác vùng khối u.  
+- Diện tích khối u được tính bằng **hai phương pháp**:  
+  - **Đếm Pixel** (nhanh, trực tiếp).  
+  - **Phân rã Hình học** (tam giác hóa – chính xác hơn ở biên phức tạp).  
+- So sánh cho thấy phương pháp hình học giúp giảm sai số và trực quan hóa tốt hơn.  
 
+---
 
+## 🚀 Hướng phát triển    
+- Phát triển thành công cụ hỗ trợ chẩn đoán lâm sàng, trực quan và thân thiện với bác sĩ.  
+- Kết hợp với dữ liệu 3D MRI/CT để tính thể tích khối u, không chỉ diện tích 2D.    
+- Xây dựng giao diện web/app thân thiện, cho phép tải ảnh và nhận kết quả ngay.  
+- Kết hợp với dữ liệu lâm sàng khác (tuổi, vị trí, loại khối u) để hỗ trợ chẩn đoán toàn diện hơn. 
 
 
 
